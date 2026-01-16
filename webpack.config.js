@@ -3,12 +3,12 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 
 // Production uchun remote URL larni environment variable dan olamiz
 const getRemoteUrl = (name, defaultPort) => {
-  const envVar = process.env[`${name.toUpperCase()}_MF_URL`];
-  if (envVar) return envVar;
-  if (process.env.NODE_ENV === "production") {
-    return `https://${name}.vercel.app`; // Vercel deploy uchun
-  }
-  return `http://localhost:${defaultPort}`;
+    const envVar = process.env[`${name.toUpperCase()}_MF_URL`];
+    if (envVar) return envVar;
+    if (process.env.NODE_ENV === "production") {
+        return name; // Vercel deploy uchun
+    }
+    return `http://localhost:${defaultPort}`;
 };
 
 module.exports = {
@@ -46,7 +46,10 @@ module.exports = {
             remotes: {
                 // Bu yerda remote mikrofrontendlarni ro'yxatga olamiz
                 // Production da environment variable orqali sozlanadi
-                reactMF: `reactMF@${getRemoteUrl("react", 3001)}/remoteEntry.js`,
+                reactMF: `reactMF@${getRemoteUrl(
+          "https://react-mf.vercel.app",
+          3001
+        )}/remoteEntry.js`,
                 vueMF: `vueMF@${getRemoteUrl("vue", 3002)}/remoteEntry.js`,
                 angularMF: `angularMF@${getRemoteUrl("angular", 3003)}/remoteEntry.js`,
             },
