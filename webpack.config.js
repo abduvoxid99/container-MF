@@ -3,12 +3,16 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 
 // Production uchun remote URL larni environment variable dan olamiz
 const getRemoteUrl = (name, defaultPort) => {
-    const envVar = process.env[`${name.toUpperCase()}_MF_URL`];
-    if (envVar) return envVar;
-    if (process.env.NODE_ENV === "production") {
-        return name; // Vercel deploy uchun
-    }
-    return `http://localhost:${defaultPort}`;
+    // const envVar = process.env[`${name.toUpperCase()}_MF_URL`];
+    // if (envVar) return envVar;
+
+    console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+    console.log("defaultPort", defaultPort);
+    console.log("name", name);
+    if (process.env.NODE_ENV !== "production")
+        return `http://localhost:${defaultPort}`;
+
+    return name; // Vercel deploy uchun
 };
 
 module.exports = {
