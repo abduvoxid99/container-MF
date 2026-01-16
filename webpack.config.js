@@ -9,8 +9,8 @@ const getRemoteUrl = (name, defaultPort) => {
     console.log("process.env.NODE_ENV", process.env.NODE_ENV);
     console.log("defaultPort", defaultPort);
     console.log("name", name);
-    if (process.env.NODE_ENV !== "production")
-        return `http://localhost:${defaultPort}`;
+    // if (process.env.NODE_ENV !== "production")
+    //     return `http://localhost:${defaultPort}`;
 
     return name; // Vercel deploy uchun
 };
@@ -54,8 +54,8 @@ module.exports = {
           "https://react-mf.vercel.app",
           3001
         )}/remoteEntry.js`,
-                vueMF: `vueMF@${getRemoteUrl("vue", 3002)}/remoteEntry.js`,
-                angularMF: `angularMF@${getRemoteUrl("angular", 3003)}/remoteEntry.js`,
+                // vueMF: `vueMF@${getRemoteUrl("vue", 3002)}/remoteEntry.js`,
+                // angularMF: `angularMF@${getRemoteUrl("angular", 3003)}/remoteEntry.js`,
             },
             shared: {
                 // Shared dependencies - React va boshqa kutubxonalar
