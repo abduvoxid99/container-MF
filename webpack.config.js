@@ -54,8 +54,8 @@ module.exports = {
           "https://react-mf.vercel.app",
           3001
         )}/remoteEntry.js`,
-                // vueMF: `vueMF@${getRemoteUrl("vue", 3002)}/remoteEntry.js`,
-                // angularMF: `angularMF@${getRemoteUrl("angular", 3003)}/remoteEntry.js`,
+                vueMF: `vueMF@${getRemoteUrl("vue", 3002)}/remoteEntry.js`,
+                angularMF: `angularMF@${getRemoteUrl("angular", 3003)}/remoteEntry.js`,
             },
             shared: {
                 // Shared dependencies - React va boshqa kutubxonalar
